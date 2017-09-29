@@ -388,7 +388,7 @@ org.apache.commons.logging.LogFactory文件了：
 
 而且，Logger类也没有实现commons-logging提供的Log接口：
 
-![4]($res/https://github.com/minghui1874/xiuxiuxiu/blob/master/logging/4.png
+![4]($res/https://github.com/minghui1874/xiuxiuxiu/blob/master/logging/4.png)
 
 log4j中也没有找到继承org.apache.commons.logging.LogFactory的类。 
 **那么，log4j是如何被commons-logging加载的呢？** 
