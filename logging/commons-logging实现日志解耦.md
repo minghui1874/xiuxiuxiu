@@ -88,7 +88,7 @@ static {
 commons-logging最核心有用的功能是解耦，它的SimpleLog实现性能比不上其他实现，如log4j等。 
 首先，日志实例是通过LogFactory的getLog(String)方法创建的：
 
-![2]($res/2.png)
+![2](https://github.com/minghui1874/xiuxiuxiu/blob/master/logging/2.png)
 
 LogFatory是一个抽象类，它负责加载具体的日志实现，分析其Factory getFactory()方法：
 
@@ -384,18 +384,18 @@ Log logger = LogFactory.getLog(String)
 但是，查看log4j的jar包，发现在META-INF下面并没有名为services得文件夹，更别说 
 org.apache.commons.logging.LogFactory文件了：
 
-![3]($res/3.png)
+![3](https://github.com/minghui1874/xiuxiuxiu/blob/master/logging/3.png)
 
 而且，Logger类也没有实现commons-logging提供的Log接口：
 
-![4]($res/4.png)
+![4]($res/https://github.com/minghui1874/xiuxiuxiu/blob/master/logging/4.png
 
 log4j中也没有找到继承org.apache.commons.logging.LogFactory的类。 
 **那么，log4j是如何被commons-logging加载的呢？** 
 按照上述LogFactory寻找factory实现的流程，LogFactory在找不到`org.apache.commons.logging.LogFactory`实现时，会使用默认实现`org.apache.commons.logging.impl.LogFactoryImpl`。
 
 
-![5]($res/5.png)
+![5](https://github.com/minghui1874/xiuxiuxiu/blob/master/logging/5.png)
 
 通过分析LogFactoryImpl的getInstance()方法，其调用以下方法获得logger实例：
 
@@ -615,7 +615,7 @@ private String findUserSpecifiedLogClassName() {
 public  class Log4JLogger implements Log, Serializable；
 ```
 Log4jLogger则是通过组合log4j提供的org.apache.log4j.Logger，来提供trace到fatal功能。
-![6]($res/6.png)
+![6](https://github.com/minghui1874/xiuxiuxiu/blob/master/logging/6.png)
 
 在log4j的jar包没有导入到classpath之前，这个类是无法通过编译的。
 
@@ -665,7 +665,7 @@ logger = LogManager.getLogger(Log4jTwoTest.class);
 **解耦原理：** 
 log4j-jcl提供了解耦的实现，观察其jar包：
 
-![7]($res/7.png)
+![7](https://github.com/minghui1874/xiuxiuxiu/blob/master/logging/7.png)
 
 该文件内容为：`org.apache.logging.log4j.jcl.LogFactoryImpl `
 根据commons-logging抽象日志工厂的第二步骤spi服务发现规则，抽象工厂使用`org.apache.logging.log4j.jcl.LogFactoryImpl`作为实际产生日志实现的工厂。 
