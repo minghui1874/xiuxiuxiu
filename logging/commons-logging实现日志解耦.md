@@ -37,7 +37,7 @@ private  static  final Log logger = LogFactory.getLog(CommonsLogTest.class);
 ```
 输出为，默认日志级别为INFO:
 
-![1]($res/1.png)
+![1](https://github.com/minghui1874/xiuxiuxiu/blob/master/logging/1.png)
 
 
 
